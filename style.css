@@ -74,7 +74,7 @@ nav a:hover {
 
 /* CONTÊINER DO EFEITO CASCATA */
 .cascade-container {
-    margin-top: 120px; /*era 140px caso algo estranho acontecer modificar
+    margin-top: 100px; 
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -102,7 +102,7 @@ nav a:hover {
 .comic-cover {
     border: var(--border-width) solid var(--primary-black);
     background-color: var(--comic-white);
-    max-width: 900px; /*mudanca aqui tbm*/
+    max-width: 800px; 
     margin: 0 auto;
     box-shadow: 6px 6px 0px var(--comic-red);
     padding: 15px;
@@ -209,7 +209,7 @@ h2.section-title {
     font-family: 'Bangers', cursive;
     font-size: 40px;
     color: var(--comic-red);
-    margin-bottom: 20px;
+    margin-bottom: 500px;
     text-align: center;
 }
 
