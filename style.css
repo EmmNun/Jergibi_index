@@ -1,0 +1,339 @@
+:root {
+    --primary-black: #111111;
+    --comic-white: #ffffff;
+    --comic-red: #ff2222;
+    --comic-blue: #0055ff;
+    --border-width: 4px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--comic-white);
+    color: var(--primary-black);
+    overflow-x: hidden;
+}
+
+/* BARRA DE NAVEGAÇÃO */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-black);
+    border-bottom: var(--border-width) solid var(--comic-red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Bangers', cursive;
+    color: var(--comic-white);
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--comic-red);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    font-family: 'Bangers', cursive;
+    color: var(--comic-white);
+    text-decoration: none;
+    font-size: 22px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--comic-red);
+}
+
+/* EFEITO DE VIRAR PÁGINA / SEÇÕES */
+.page-container {
+    margin-top: 70px;
+    position: relative;
+    min-height: calc(100vh - 70px);
+}
+
+.section {
+    display: none;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* PÁGINA INICIAL (Capa de Gibi) */
+#home {
+    text-align: center;
+    background: radial-gradient(circle, #fff 0%, #f0f0f0 100%);
+    padding: 60px 20px;
+}
+
+.comic-cover {
+    border: 6px solid var(--primary-black);
+    background-color: var(--comic-white);
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 10px 10px 0px var(--primary-black);
+    padding: 20px;
+    position: relative;
+}
+
+.comic-cover img {
+    width: 100%;
+    height: auto;
+    border: var(--border-width) solid var(--primary-black);
+    display: block;
+}
+
+.comic-title-banner {
+    background-color: var(--comic-red);
+    color: var(--comic-white);
+    font-family: 'Bangers', cursive;
+    font-size: 48px;
+    padding: 10px;
+    border: var(--border-width) solid var(--primary-black);
+    margin-bottom: 20px;
+    transform: rotate(-1deg);
+    box-shadow: 4px 4px 0px var(--primary-black);
+}
+
+.turn-page-btn {
+    margin-top: 30px;
+    background-color: var(--comic-blue);
+    color: var(--comic-white);
+    font-family: 'Bangers', cursive;
+    font-size: 32px;
+    padding: 15px 40px;
+    border: var(--border-width) solid var(--primary-black);
+    cursor: pointer;
+    box-shadow: 5px 5px 0px var(--primary-black);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.turn-page-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px var(--primary-black);
+    background-color: #0042cc;
+}
+
+/* SOBRE MIM */
+.about-box {
+    border: var(--border-width) solid var(--primary-black);
+    background: var(--comic-white);
+    padding: 40px;
+    box-shadow: 8px 8px 0px var(--comic-red);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.about-box h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    color: var(--comic-blue);
+    margin-bottom: 20px;
+}
+
+.about-box p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* GALERIA DESLIZANTE ACESSÍVEL */
+h2.section-title {
+    font-family: 'Bangers', cursive;
+    font-size: 45px;
+    text-align: center;
+    color: var(--primary-black);
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0px var(--comic-blue);
+}
+
+.slider-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.gallery-slider {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--comic-red) var(--primary-black);
+}
+
+.gallery-slider::-webkit-scrollbar {
+    height: 12px;
+}
+
+.gallery-slider::-webkit-scrollbar-thumb {
+    background-color: var(--comic-red);
+    border: 2px solid var(--primary-black);
+}
+
+.gallery-item {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    border: var(--border-width) solid var(--primary-black);
+    background: var(--comic-white);
+    box-shadow: 5px 5px 0px var(--primary-black);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gallery-item:hover, .gallery-item:focus {
+    transform: scale(1.03);
+    outline: none;
+    border-color: var(--comic-blue);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: var(--border-width) solid var(--primary-black);
+}
+
+.gallery-info {
+    padding: 15px;
+}
+
+.gallery-info h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 24px;
+    color: var(--comic-red);
+    margin-bottom: 5px;
+}
+
+.gallery-info p {
+    font-size: 14px;
+    color: #444;
+}
+
+/* MODAL (ESPAÇO PARA FOTO DE 25 CM DE LARGURA / DETALHES) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--comic-white);
+    border: 6px solid var(--primary-black);
+    box-shadow: 10px 10px 0px var(--comic-red);
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-content img {
+    width: 100%;
+    max-width: 25cm; /* Proporção e largura solicitada */
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border: var(--border-width) solid var(--primary-black);
+    margin-bottom: 20px;
+}
+
+.modal-content h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 32px;
+    color: var(--comic-blue);
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    background-color: var(--comic-red);
+    color: var(--comic-white);
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    padding: 8px 20px;
+    border: var(--border-width) solid var(--primary-black);
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--primary-black);
+}
+
+.close-modal:hover {
+    background-color: #d11111;
+}
+
+/* CONTATO */
+.contact-box {
+    border: var(--border-width) solid var(--primary-black);
+    background: var(--comic-white);
+    padding: 40px;
+    box-shadow: 8px 8px 0px var(--comic-blue);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.contact-box h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    color: var(--comic-red);
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    font-size: 20px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.contact-info a {
+    color: var(--comic-blue);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}

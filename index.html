@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Ortiz | Graphic Design Hero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">JEREMY ORTIZ</div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">Sobre Mim</a></li>
+                <li><a href="#" onclick="showPage('works')">Meus Trabalhos</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-container">
+
+        <section id="home" class="section active">
+            <div class="comic-title-banner">JEREMY ORTIZ: GRAPHIC DESIGN HERO!</div>
+            <div class="comic-cover">
+                <img src="capa-gibi.png" alt="Capa de Gibi do Jeremy Ortiz Designer">
+            </div>
+            <button class="turn-page-btn" onclick="showPage('works')">Virar Página ➔</button>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-box">
+                <h2>Sobre Mim</h2>
+                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Sou um designer gráfico apaixonado por transformar ideias criativas em realidade visual com muita energia e estilo de quadrinhos.</p>
+                <p>Trabalho com criação digital no computador, impressão profissional (printing) e envelopamento automotivo (wrapping), sempre focando em entregar resultados incríveis nas cores preto, vermelho, azul e branco!</p>
+            </div>
+        </section>
+
+        <section id="works" class="section">
+            <h2 class="section-title">Galeria de Trabalhos</h2>
+            <div class="slider-wrapper">
+                <div class="gallery-slider" role="region" aria-label="Galeria de Trabalhos">
+                    
+                    <div class="gallery-item" tabindex="0" onclick="openModal('trabalho1')">
+                        <img src="trabalho1.jpg" alt="Design Digital no Computador">
+                        <div class="gallery-info">
+                            <h3>Design Digital</h3>
+                            <p>Criação de logotipo de super-herói no computador com estilo moderno.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" tabindex="0" onclick="openModal('trabalho2')">
+                        <img src="trabalho2.jpg" alt="Impressão em Larga Escala">
+                        <div class="gallery-info">
+                            <h3>Printing</h3>
+                            <p>Impressão de alta precisão em vinil para banners e faixas comerciais.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" tabindex="0" onclick="openModal('trabalho3')">
+                        <img src="trabalho3.jpg" alt="Envelopamento Automotivo">
+                        <div class="gallery-info">
+                            <h3>Wrapping</h3>
+                            <p>Envelopamento total de van comercial com design de tigre agressivo.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-box">
+                <h2>Fale Comigo</h2>
+                <p class="contact-info">E-mail: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
+                <p class="contact-info">Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
+                <p class="contact-info">Telefone: <a href="tel:9871234567">987-123-4567</a></p>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImg" src="" alt="Detalhe do Trabalho">
+            <h3 id="modalTitle">Título do Trabalho</h3>
+            <p id="modalDesc">Descrição detalhada do trabalho realizado pelo designer.</p>
+            <button class="close-modal" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
