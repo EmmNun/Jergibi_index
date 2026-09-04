@@ -68,15 +68,34 @@ nav a:hover {
     color: var(--comic-red);
 }
 
-/* CONTÊINER DO EFEITO CASCATA DE GIBI */
+/* CONTÊINER DO EFEITO CASCATA */
 .cascade-container {
     margin-top: 120px;
     position: relative;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
-    min-height: 550px;
+    padding: 20px 20px 80px 20px;
+}
+
+/* PÁGINAS DO GIBI */
+.comic-page {
+    display: none; /* Esconde as inativas completamente do fluxo */
+    background: var(--comic-white);
+    color: var(--primary-black);
+    border: var(--border-width) solid var(--primary-black);
+    box-shadow: 12px 12px 0px var(--comic-blue);
+    padding: 40px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: all 0.4s ease-in-out;
+}
+
+/* PÁGINA ATIVA COM EFEITO DE ENTRADA */
+.comic-page.active {
+    display: block; /* Mostra apenas a ativa, permitindo rolagem vertical normal */
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* EFEITO CASCATA REAL: SOBREPOSIÇÃO EM PILHA DE GIBI */
