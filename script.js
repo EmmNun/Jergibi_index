@@ -1,52 +1,104 @@
-// Dados detalhados dos trabalhos para exibição no Modal Expandido
-const projectData = {
-    trabalho1: {
+// Base de dados contendo as MÚLTIPLAS FOTOS para cada trabalho clicado
+const projectsSubGallery = {
+    digital: {
         title: "Criação Digital no Computador",
-        desc: "Desenvolvimento completo de identidade visual e mascotes utilizando mesas digitalizadoras e softwares profissionais. Cores principais aplicadas: azul vibrante e vermelho marcante sobre fundo contrastante.",
-        img: "trabalho1.jpg"
+        desc: "Processo criativo com sketch inicial, estruturação de vetores e arte final vetorizada.",
+        photos: [
+            "trabalho1.jpg", // Foto principal
+            "digital-detalhe1.jpg", // Foto extra de rascunho
+            "digital-detalhe2.jpg"  // Foto extra de vetorização
+        ]
     },
-    trabalho2: {
+    printing: {
         title: "Printing de Alta Precisão",
-        desc: "Processo de impressão em larga escala focado em fidelidade de cores corporativas (preto, branco, vermelho e azul). Material vinil resistente a intempéries.",
-        img: "trabalho2.jpg"
+        desc: "Configuração de perfis de cor, corte eletrônico de vinil e verificação de rolos.",
+        photos: [
+            "trabalho2.jpg",
+            "printing-detalhe1.jpg",
+            "printing-detalhe2.jpg"
+        ]
     },
-    trabalho3: {
+    wrapping: {
         title: "Wrapping Automotivo Profissional",
-        desc: "Aplicação minuciosa de adesivos em veículos comerciais, garantindo acabamento sem bolhas, durabilidade e destaque visual nas ruas.",
-        img: "trabalho3.jpg"
+        desc: "Limpeza da lataria, aplicação aquecida com soprador térmico e acabamento nas maçanetas.",
+        photos: [
+            "trabalho3.jpg",
+            "wrapping-detalhe1.jpg",
+            "wrapping-detalhe2.jpg"
+        ]
     }
 };
 
-// Função para alternar páginas simulando efeito de virar a página do gibi
+let currentSubIndex = 0;
+let currentPhotosArray = [];
+
+// Função de transição em cascata entre páginas do Gibi
 function showPage(pageId) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(sec => sec.classList.remove('active'));
+    const pages = document.querySelectorAll('.comic-page');
+    pages.forEach(page => page.classList.remove('active'));
     
     document.getElementById(pageId).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Funções para abrir o Modal detalhado da galeria
-function openModal(projectId) {
-    const modal = document.getElementById('projectModal');
-    const data = projectData[projectId];
+// Abrir modal e carregar múltiplas fotos do projeto selecionado
+function openProjectModal(projectId) {
+    const modal = document.getElementById('subGalleryModal');
+    const project = projectsSubGallery[projectId];
 
-    document.getElementById('modalTitle').innerText = data.title;
-    document.getElementById('modalDesc').innerText = data.desc;
-    document.getElementById('modalImg').src = data.img;
+    document.getElementById('subModalTitle').innerText = project.title;
+    document.getElementById('subModalDesc').innerText = project.desc;
 
+    currentPhotosArray = project.photos;
+    currentSubIndex = 0;
+
+    const track = document.getElementById('subPhotosTrack');
+    track.innerHTML = "";
+
+    // Criar elementos de imagem dinamicamente para o slider interno
+    currentPhotosArray.forEach(imgSrc => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'sub-photo-item';
+        
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = "Detalhe do trabalho";
+        
+        itemDiv.appendChild(img);
+        track.appendChild(itemDiv);
+    });
+
+    updateSubSliderPosition();
     modal.classList.add('active');
 }
 
-// Função para fechar o Modal
-function closeModal() {
-    document.getElementById('projectModal').classList.remove('active');
+// Deslizar para os lados dentro do modal
+function slideSubPhotos(direction) {
+    currentSubIndex += direction;
+    
+    if (currentSubIndex < 0) {
+        currentSubIndex = currentPhotosArray.length - 1; // Vai para a última foto
+    } else if (currentSubIndex >= currentPhotosArray.length) {
+        currentSubIndex = 0; // Volta para a primeira foto
+    }
+
+    updateSubSliderPosition();
 }
 
-// Fechar modal ao clicar fora da caixa de conteúdo
-window.onclick = function(event) {
-    const modal = document.getElementById('projectModal');
-    if (event.target == modal) {
-        closeModal();
-    }
+function updateSubSliderPosition() {
+    const track = document.getElementById('subPhotosTrack');
+    track.style.transform = `translateX(-${currentSubIndex * 100}%)`;
 }
+
+// Fechar modal
+function closeProjectModal() {
+    document.getElementById('subGalleryModal').classList.remove('active');
+}
+
+// Fechar clicando fora da caixa do modal
+window.onclick = function(event) {
+    const modal = document.getElementById('subGalleryModal');
+    if (event.target == modal) {
+        closeProjectModal();
+    }
+};

@@ -61,51 +61,53 @@ nav a:hover {
     color: var(--comic-red);
 }
 
-/* EFEITO DE VIRAR PÁGINA / SEÇÕES */
-.page-container {
-    margin-top: 70px;
+/* EFEITO DE CASCATA / PÁGINAS SOBREPOSTAS */
+.cascade-container {
+    margin-top: 80px;
     position: relative;
-    min-height: calc(100vh - 70px);
-}
-
-.section {
-    display: none;
-    padding: 40px 20px;
     max-width: 1200px;
-    margin: 0 auto;
-    animation: fadeIn 0.5s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 }
 
-.section.active {
+.comic-page {
+    display: none;
+    background: var(--comic-white);
+    border: var(--border-width) solid var(--primary-black);
+    box-shadow: 12px 12px 0px var(--primary-black);
+    padding: 40px;
+    margin-bottom: 40px;
+    animation: cascadeIn 0.4s ease-in-out;
+}
+
+.comic-page.active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes cascadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* PÁGINA INICIAL (Capa de Gibi) */
+/* PÁGINA INICIAL */
 #home {
     text-align: center;
-    background: radial-gradient(circle, #fff 0%, #f0f0f0 100%);
-    padding: 60px 20px;
 }
 
 .comic-cover {
-    border: 6px solid var(--primary-black);
+    border: var(--border-width) solid var(--primary-black);
     background-color: var(--comic-white);
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
-    box-shadow: 10px 10px 0px var(--primary-black);
-    padding: 20px;
-    position: relative;
+    box-shadow: 6px 6px 0px var(--comic-red);
+    padding: 15px;
 }
 
 .comic-cover img {
     width: 100%;
     height: auto;
-    border: var(--border-width) solid var(--primary-black);
+    border: 2px solid var(--primary-black);
     display: block;
 }
 
@@ -113,7 +115,7 @@ nav a:hover {
     background-color: var(--comic-red);
     color: var(--comic-white);
     font-family: 'Bangers', cursive;
-    font-size: 48px;
+    font-size: 42px;
     padding: 10px;
     border: var(--border-width) solid var(--primary-black);
     margin-bottom: 20px;
@@ -126,30 +128,20 @@ nav a:hover {
     background-color: var(--comic-blue);
     color: var(--comic-white);
     font-family: 'Bangers', cursive;
-    font-size: 32px;
-    padding: 15px 40px;
+    font-size: 26px;
+    padding: 12px 30px;
     border: var(--border-width) solid var(--primary-black);
     cursor: pointer;
-    box-shadow: 5px 5px 0px var(--primary-black);
-    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 4px 4px 0px var(--primary-black);
+    transition: transform 0.1s;
 }
 
 .turn-page-btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0px var(--primary-black);
     background-color: #0042cc;
 }
 
 /* SOBRE MIM */
-.about-box {
-    border: var(--border-width) solid var(--primary-black);
-    background: var(--comic-white);
-    padding: 40px;
-    box-shadow: 8px 8px 0px var(--comic-red);
-    max-width: 800px;
-    margin: 40px auto;
-}
-
 .about-box h2 {
     font-family: 'Bangers', cursive;
     font-size: 40px;
@@ -163,10 +155,10 @@ nav a:hover {
     margin-bottom: 15px;
 }
 
-/* GALERIA DESLIZANTE ACESSÍVEL */
+/* GALERIA DESLIZANTE PRINCIPAL */
 h2.section-title {
     font-family: 'Bangers', cursive;
-    font-size: 45px;
+    font-size: 42px;
     text-align: center;
     color: var(--primary-black);
     margin-bottom: 30px;
@@ -176,7 +168,6 @@ h2.section-title {
 .slider-wrapper {
     position: relative;
     max-width: 100%;
-    margin: 0 auto;
 }
 
 .gallery-slider {
@@ -184,18 +175,9 @@ h2.section-title {
     gap: 25px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: 20px 10px;
+    padding: 15px 5px;
     scrollbar-width: thin;
     scrollbar-color: var(--comic-red) var(--primary-black);
-}
-
-.gallery-slider::-webkit-scrollbar {
-    height: 12px;
-}
-
-.gallery-slider::-webkit-scrollbar-thumb {
-    background-color: var(--comic-red);
-    border: 2px solid var(--primary-black);
 }
 
 .gallery-item {
@@ -208,9 +190,8 @@ h2.section-title {
     transition: transform 0.2s;
 }
 
-.gallery-item:hover, .gallery-item:focus {
+.gallery-item:hover {
     transform: scale(1.03);
-    outline: none;
     border-color: var(--comic-blue);
 }
 
@@ -237,7 +218,28 @@ h2.section-title {
     color: #444;
 }
 
-/* MODAL (ESPAÇO PARA FOTO DE 25 CM DE LARGURA / DETALHES) */
+/* CONTATO */
+.contact-box h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    color: var(--comic-red);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-info {
+    font-size: 20px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--comic-blue);
+    text-decoration: none;
+}
+
+/* MODAL COM SUB-GALERIA INTERNA (FOTOS DESLIZÁVEIS) */
 .modal {
     display: none;
     position: fixed;
@@ -245,7 +247,7 @@ h2.section-title {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.85);
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -260,80 +262,92 @@ h2.section-title {
     background-color: var(--comic-white);
     border: 6px solid var(--primary-black);
     box-shadow: 10px 10px 0px var(--comic-red);
-    max-width: 700px;
+    max-width: 750px;
     width: 100%;
     padding: 30px;
     position: relative;
     text-align: center;
 }
 
-.modal-content img {
-    width: 100%;
-    max-width: 25cm; /* Proporção e largura solicitada */
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-    border: var(--border-width) solid var(--primary-black);
-    margin-bottom: 20px;
-}
-
 .modal-content h3 {
     font-family: 'Bangers', cursive;
     font-size: 32px;
     color: var(--comic-blue);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .modal-content p {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 15px;
     margin-bottom: 20px;
+    color: #333;
 }
 
-.close-modal {
+/* Slider Interno dentro do Modal */
+.sub-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: var(--border-width) solid var(--primary-black);
+    background: #000;
+}
+
+.sub-photos-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+}
+
+.sub-photo-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-photo-item img {
+    width: 100%;
+    max-width: 25cm; /* Proporção de largura solicitada */
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Setas de navegação internas */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: var(--comic-red);
+    color: white;
+    border: 2px solid var(--primary-black);
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 2px 2px 0px var(--primary-black);
+}
+
+.slider-arrow:hover {
+    background-color: #d11111;
+}
+
+.left-arrow { left: 10px; }
+.right-arrow { right: 10px; }
+
+.close-modal {
+    background-color: var(--comic-blue);
     color: var(--comic-white);
     font-family: 'Bangers', cursive;
     font-size: 22px;
-    padding: 8px 20px;
+    padding: 8px 25px;
     border: var(--border-width) solid var(--primary-black);
     cursor: pointer;
     box-shadow: 3px 3px 0px var(--primary-black);
 }
 
 .close-modal:hover {
-    background-color: #d11111;
-}
-
-/* CONTATO */
-.contact-box {
-    border: var(--border-width) solid var(--primary-black);
-    background: var(--comic-white);
-    padding: 40px;
-    box-shadow: 8px 8px 0px var(--comic-blue);
-    max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
-}
-
-.contact-box h2 {
-    font-family: 'Bangers', cursive;
-    font-size: 40px;
-    color: var(--comic-red);
-    margin-bottom: 20px;
-}
-
-.contact-info {
-    font-size: 20px;
-    margin: 15px 0;
-    font-weight: bold;
-}
-
-.contact-info a {
-    color: var(--comic-blue);
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    text-decoration: underline;
+    background-color: #0042cc;
 }
