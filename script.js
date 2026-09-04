@@ -1,12 +1,11 @@
-// Base de dados contendo as MÚLTIPLAS FOTOS para cada trabalho clicado
 const projectsSubGallery = {
     digital: {
         title: "Criação Digital no Computador",
         desc: "Processo criativo com sketch inicial, estruturação de vetores e arte final vetorizada.",
         photos: [
-            "trabalho1.jpg", // Foto principal
-            "digital-detalhe1.jpg", // Foto extra de rascunho
-            "digital-detalhe2.jpg"  // Foto extra de vetorização
+            "trabalho1.jpg",
+            "digital-detalhe1.jpg",
+            "digital-detalhe2.jpg"
         ]
     },
     printing: {
@@ -32,7 +31,7 @@ const projectsSubGallery = {
 let currentSubIndex = 0;
 let currentPhotosArray = [];
 
-// Função de transição em cascata entre páginas do Gibi
+// Função que controla a troca de páginas pelo menu superior
 function showPage(pageId) {
     const pages = document.querySelectorAll('.comic-page');
     pages.forEach(page => page.classList.remove('active'));
@@ -55,7 +54,6 @@ function openProjectModal(projectId) {
     const track = document.getElementById('subPhotosTrack');
     track.innerHTML = "";
 
-    // Criar elementos de imagem dinamicamente para o slider interno
     currentPhotosArray.forEach(imgSrc => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'sub-photo-item';
@@ -77,9 +75,9 @@ function slideSubPhotos(direction) {
     currentSubIndex += direction;
     
     if (currentSubIndex < 0) {
-        currentSubIndex = currentPhotosArray.length - 1; // Vai para a última foto
+        currentSubIndex = currentPhotosArray.length - 1;
     } else if (currentSubIndex >= currentPhotosArray.length) {
-        currentSubIndex = 0; // Volta para a primeira foto
+        currentSubIndex = 0;
     }
 
     updateSubSliderPosition();
@@ -95,7 +93,7 @@ function closeProjectModal() {
     document.getElementById('subGalleryModal').classList.remove('active');
 }
 
-// Fechar clicando fora da caixa do modal
+// Fechar clicando fora do modal
 window.onclick = function(event) {
     const modal = document.getElementById('subGalleryModal');
     if (event.target == modal) {

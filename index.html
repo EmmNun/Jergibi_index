@@ -9,6 +9,7 @@
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGAÇÃO -->
     <header>
         <div class="logo">JEREMY ORTIZ</div>
         <nav>
@@ -21,31 +22,36 @@
         </nav>
     </header>
 
+    <!-- SISTEMA DE CASCATA / PÁGINAS EM PILHA DE GIBI -->
     <div class="cascade-container">
 
+        <!-- PÁGINA INICIAL (CAPA) -->
         <section id="home" class="comic-page active">
             <div class="comic-title-banner">JEREMY ORTIZ: GRAPHIC DESIGN HERO!</div>
             <div class="comic-cover">
+                <!-- INSTRUÇÃO: Salve a imagem do gibi como 'capa-gibi.png' -->
                 <img src="capa-gibi.png" alt="Capa de Gibi">
             </div>
-            <button class="turn-page-btn" onclick="showPage('works')">Virar Página ➔</button>
         </section>
 
+        <!-- SOBRE MIM -->
         <section id="about" class="comic-page">
             <div class="about-box">
                 <h2>Sobre Mim</h2>
                 <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Sou um designer gráfico apaixonado por transformar ideias criativas em realidade visual com muita energia e estilo de quadrinhos.</p>
                 <p>Trabalho com criação digital no computador, impressão profissional (printing) e envelopamento automotivo (wrapping), sempre focando em entregar resultados incríveis nas cores preto, vermelho, azul e branco!</p>
             </div>
-            <button class="turn-page-btn" onclick="showPage('works')">Ir para Trabalhos ➔</button>
         </section>
 
+        <!-- MEUS TRABALHOS (GALERIA PRINCIPAL) -->
         <section id="works" class="comic-page">
             <h2 class="section-title">Galeria de Trabalhos</h2>
             <div class="slider-wrapper">
                 <div class="gallery-slider" role="region" aria-label="Galeria de Trabalhos">
                     
+                    <!-- ITEM 1: Design Digital -->
                     <div class="gallery-item" tabindex="0" onclick="openProjectModal('digital')">
+                        <!-- INSTRUÇÃO: Salve como 'trabalho1.jpg' -->
                         <img src="trabalho1.jpg" alt="Design Digital">
                         <div class="gallery-info">
                             <h3>Design Digital</h3>
@@ -53,7 +59,9 @@
                         </div>
                     </div>
 
+                    <!-- ITEM 2: Printing -->
                     <div class="gallery-item" tabindex="0" onclick="openProjectModal('printing')">
+                        <!-- INSTRUÇÃO: Salve como 'trabalho2.jpg' -->
                         <img src="trabalho2.jpg" alt="Printing">
                         <div class="gallery-info">
                             <h3>Printing</h3>
@@ -61,7 +69,9 @@
                         </div>
                     </div>
 
+                    <!-- ITEM 3: Wrapping -->
                     <div class="gallery-item" tabindex="0" onclick="openProjectModal('wrapping')">
+                        <!-- INSTRUÇÃO: Salve como 'trabalho3.jpg' -->
                         <img src="trabalho3.jpg" alt="Wrapping">
                         <div class="gallery-info">
                             <h3>Wrapping</h3>
@@ -71,9 +81,9 @@
 
                 </div>
             </div>
-            <button class="turn-page-btn" onclick="showPage('contact')">Ir para Contato ➔</button>
         </section>
 
+        <!-- CONTATO -->
         <section id="contact" class="comic-page">
             <div class="contact-box">
                 <h2>Fale Comigo</h2>
@@ -81,20 +91,22 @@
                 <p class="contact-info">Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
                 <p class="contact-info">Telefone: <a href="tel:9871234567">987-123-4567</a></p>
             </div>
-            <button class="turn-page-btn" onclick="showPage('home')">⬅ Voltar à Capa</button>
         </section>
 
     </div>
 
+    <!-- MODAL DE SUB-GALERIA (FOTOS MÚLTIPLAS INTERNAS) -->
     <div id="subGalleryModal" class="modal">
         <div class="modal-content">
             <h3 id="subModalTitle">Nome do Projeto</h3>
             <p id="subModalDesc">Descrição geral do projeto executado.</p>
             
+            <!-- Carrossel Interno de Múltiplas Fotos -->
             <div class="sub-slider-container">
                 <button class="slider-arrow left-arrow" onclick="slideSubPhotos(-1)">❮</button>
                 <div class="sub-photos-track" id="subPhotosTrack">
-                    </div>
+                    <!-- As imagens internas serão inseridas dinamicamente pelo JavaScript -->
+                </div>
                 <button class="slider-arrow right-arrow" onclick="slideSubPhotos(1)">❯</button>
             </div>
 

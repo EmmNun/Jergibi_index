@@ -14,8 +14,15 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--comic-white);
-    color: var(--primary-black);
+    /* Fundo preto com padrão de linhas listradas em azul, vermelho e branco */
+    background-color: #0a0a0a;
+    background-image: 
+        linear-gradient(135deg, rgba(255, 34, 34, 0.15) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(0, 85, 255, 0.15) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255, 34, 34, 0.05) 25%, #0a0a0a 25%);
+    background-size: 60px 60px;
+    color: var(--comic-white);
     overflow-x: hidden;
 }
 
@@ -63,7 +70,7 @@ nav a:hover {
 
 /* EFEITO DE CASCATA / PÁGINAS SOBREPOSTAS */
 .cascade-container {
-    margin-top: 80px;
+    margin-top: 100px;
     position: relative;
     max-width: 1200px;
     margin-left: auto;
@@ -74,8 +81,9 @@ nav a:hover {
 .comic-page {
     display: none;
     background: var(--comic-white);
+    color: var(--primary-black);
     border: var(--border-width) solid var(--primary-black);
-    box-shadow: 12px 12px 0px var(--primary-black);
+    box-shadow: 12px 12px 0px var(--comic-blue);
     padding: 40px;
     margin-bottom: 40px;
     animation: cascadeIn 0.4s ease-in-out;
@@ -121,24 +129,6 @@ nav a:hover {
     margin-bottom: 20px;
     transform: rotate(-1deg);
     box-shadow: 4px 4px 0px var(--primary-black);
-}
-
-.turn-page-btn {
-    margin-top: 30px;
-    background-color: var(--comic-blue);
-    color: var(--comic-white);
-    font-family: 'Bangers', cursive;
-    font-size: 26px;
-    padding: 12px 30px;
-    border: var(--border-width) solid var(--primary-black);
-    cursor: pointer;
-    box-shadow: 4px 4px 0px var(--primary-black);
-    transition: transform 0.1s;
-}
-
-.turn-page-btn:hover {
-    transform: translate(-2px, -2px);
-    background-color: #0042cc;
 }
 
 /* SOBRE MIM */
@@ -239,7 +229,7 @@ h2.section-title {
     text-decoration: none;
 }
 
-/* MODAL COM SUB-GALERIA INTERNA (FOTOS DESLIZÁVEIS) */
+/* MODAL COM SUB-GALERIA INTERNA */
 .modal {
     display: none;
     position: fixed;
@@ -260,6 +250,7 @@ h2.section-title {
 
 .modal-content {
     background-color: var(--comic-white);
+    color: var(--primary-black);
     border: 6px solid var(--primary-black);
     box-shadow: 10px 10px 0px var(--comic-red);
     max-width: 750px;
@@ -282,7 +273,6 @@ h2.section-title {
     color: #333;
 }
 
-/* Slider Interno dentro do Modal */
 .sub-slider-container {
     position: relative;
     display: flex;
@@ -309,13 +299,12 @@ h2.section-title {
 
 .sub-photo-item img {
     width: 100%;
-    max-width: 25cm; /* Proporção de largura solicitada */
+    max-width: 25cm;
     height: 380px;
     object-fit: cover;
     display: block;
 }
 
-/* Setas de navegação internas */
 .slider-arrow {
     position: absolute;
     top: 50%;
