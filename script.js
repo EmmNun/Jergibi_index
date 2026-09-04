@@ -2,7 +2,7 @@ const projectsSubGallery = {
     digital: {
         title: "Criação Digital no Computador",
         desc: "Processo criativo com sketch inicial, estruturação de vetores e arte final vetorizada.",
-        photos: ["trabalho1.jpg", "foto1.png.jpeg", "digital-detalhe2.jpg"]
+        photos: ["trabalho1.jpg", "digital-detalhe1.jpg", "digital-detalhe2.jpg"]
     },
     printing: {
         title: "Printing de Alta Precisão",

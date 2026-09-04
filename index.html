@@ -3,355 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy Ortiz | Graphic Design</title>
+    <title>Jeremy Ortiz | Graphic Design Hero</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-black: #111111;
-            --comic-white: #ffffff;
-            --comic-red: #ff2222;
-            --comic-blue: #0055ff;
-            --border-width: 4px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0a0a0a;
-            background-image: 
-                linear-gradient(135deg, rgba(255, 34, 34, 0.15) 25%, transparent 25%),
-                linear-gradient(225deg, rgba(0, 85, 255, 0.15) 25%, transparent 25%),
-                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
-                linear-gradient(315deg, rgba(255, 34, 34, 0.05) 25%, #0a0a0a 25%);
-            background-size: 60px 60px;
-            color: var(--comic-white);
-            overflow-x: hidden;
-        }
-
-        /* BARRA DE NAVEGAÇÃO */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary-black);
-            border-bottom: var(--border-width) solid var(--comic-red);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-family: 'Bangers', cursive;
-            color: var(--comic-white);
-            font-size: 28px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0px var(--comic-red);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            font-family: 'Bangers', cursive;
-            color: var(--comic-white);
-            text-decoration: none;
-            font-size: 22px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--comic-red);
-        }
-
-        /* EFEITO DE CASCATA / PÁGINAS SOBREPOSTAS */
-        .cascade-container {
-            margin-top: 100px;
-            position: relative;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-        }
-
-        .comic-page {
-            display: none;
-            background: var(--comic-white);
-            color: var(--primary-black);
-            border: var(--border-width) solid var(--primary-black);
-            box-shadow: 12px 12px 0px var(--comic-blue);
-            padding: 40px;
-            margin-bottom: 40px;
-            animation: cascadeIn 0.4s ease-in-out;
-        }
-
-        .comic-page.active {
-            display: block;
-        }
-
-        @keyframes cascadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* PÁGINA INICIAL */
-        #home {
-            text-align: center;
-        }
-
-        .comic-cover {
-            border: var(--border-width) solid var(--primary-black);
-            background-color: var(--comic-white);
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 6px 6px 0px var(--comic-red);
-            padding: 15px;
-        }
-
-        .comic-cover img {
-            width: 100%;
-            height: auto;
-            border: 2px solid var(--primary-black);
-            display: block;
-        }
-
-        .comic-title-banner {
-            background-color: var(--comic-red);
-            color: var(--comic-white);
-            font-family: 'Bangers', cursive;
-            font-size: 42px;
-            padding: 10px;
-            border: var(--border-width) solid var(--primary-black);
-            margin-bottom: 20px;
-            transform: rotate(-1deg);
-            box-shadow: 4px 4px 0px var(--primary-black);
-        }
-
-        /* SOBRE MIM */
-        .about-box h2 {
-            font-family: 'Bangers', cursive;
-            font-size: 40px;
-            color: var(--comic-blue);
-            margin-bottom: 20px;
-        }
-
-        .about-box p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        /* GALERIA DESLIZANTE PRINCIPAL */
-        h2.section-title {
-            font-family: 'Bangers', cursive;
-            font-size: 42px;
-            text-align: center;
-            color: var(--primary-black);
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 0px var(--comic-blue);
-        }
-
-        .slider-wrapper {
-            position: relative;
-            max-width: 100%;
-        }
-
-        .gallery-slider {
-            display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 15px 5px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--comic-red) var(--primary-black);
-        }
-
-        .gallery-item {
-            flex: 0 0 300px;
-            scroll-snap-align: start;
-            border: var(--border-width) solid var(--primary-black);
-            background: var(--comic-white);
-            box-shadow: 5px 5px 0px var(--primary-black);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            border-color: var(--comic-blue);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: var(--border-width) solid var(--primary-black);
-        }
-
-        .gallery-info {
-            padding: 15px;
-        }
-
-        .gallery-info h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 24px;
-            color: var(--comic-red);
-            margin-bottom: 5px;
-        }
-
-        .gallery-info p {
-            font-size: 14px;
-            color: #444;
-        }
-
-        /* CONTATO */
-        .contact-box h2 {
-            font-family: 'Bangers', cursive;
-            font-size: 40px;
-            color: var(--comic-red);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .contact-info {
-            font-size: 20px;
-            margin: 15px 0;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .contact-info a {
-            color: var(--comic-blue);
-            text-decoration: none;
-        }
-
-        /* MODAL COM SUB-GALERIA INTERNA */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: var(--comic-white);
-            color: var(--primary-black);
-            border: 6px solid var(--primary-black);
-            box-shadow: 10px 10px 0px var(--comic-red);
-            max-width: 750px;
-            width: 100%;
-            padding: 30px;
-            position: relative;
-            text-align: center;
-        }
-
-        .modal-content h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 32px;
-            color: var(--comic-blue);
-            margin-bottom: 5px;
-        }
-
-        .modal-content p {
-            font-size: 15px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .sub-slider-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            overflow: hidden;
-            border: var(--border-width) solid var(--primary-black);
-            background: #000;
-        }
-
-        .sub-photos-track {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-            width: 100%;
-        }
-
-        .sub-photo-item {
-            min-width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sub-photo-item img {
-            width: 100%;
-            max-width: 25cm;
-            height: 380px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--comic-red);
-            color: white;
-            border: 2px solid var(--primary-black);
-            font-size: 24px;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 2px 2px 0px var(--primary-black);
-        }
-
-        .slider-arrow:hover {
-            background-color: #d11111;
-        }
-
-        .left-arrow { left: 10px; }
-        .right-arrow { right: 10px; }
-
-        .close-modal {
-            background-color: var(--comic-blue);
-            color: var(--comic-white);
-            font-family: 'Bangers', cursive;
-            font-size: 22px;
-            padding: 8px 25px;
-            border: var(--border-width) solid var(--primary-black);
-            cursor: pointer;
-            box-shadow: 3px 3px 0px var(--primary-black);
-        }
-
-        .close-modal:hover {
-            background-color: #0042cc;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGAÇÃO -->
     <header>
         <div class="logo">JEREMY ORTIZ</div>
         <nav>
@@ -364,8 +22,10 @@
         </nav>
     </header>
 
+    <!-- SISTEMA DE CASCATA / PÁGINAS EM PILHA DE GIBI -->
     <div class="cascade-container">
 
+        <!-- PÁGINA INICIAL (CAPA) -->
         <section id="home" class="comic-page active">
             <div class="comic-title-banner">JEREMY ORTIZ: GRAPHIC DESIGN HERO!</div>
             <div class="comic-cover">
@@ -373,6 +33,7 @@
             </div>
         </section>
 
+        <!-- SOBRE MIM -->
         <section id="about" class="comic-page">
             <div class="about-box">
                 <h2>Sobre Mim</h2>
@@ -381,6 +42,7 @@
             </div>
         </section>
 
+        <!-- MEUS TRABALHOS (GALERIA PRINCIPAL) -->
         <section id="works" class="comic-page">
             <h2 class="section-title">Galeria de Trabalhos</h2>
             <div class="slider-wrapper">
@@ -414,6 +76,7 @@
             </div>
         </section>
 
+        <!-- CONTATO -->
         <section id="contact" class="comic-page">
             <div class="contact-box">
                 <h2>Fale Comigo</h2>
@@ -425,6 +88,7 @@
 
     </div>
 
+    <!-- MODAL DE SUB-GALERIA (FOTOS MÚLTIPLAS INTERNAS) -->
     <div id="subGalleryModal" class="modal">
         <div class="modal-content">
             <h3 id="subModalTitle">Nome do Projeto</h3>
@@ -440,99 +104,6 @@
         </div>
     </div>
 
-    <script>
-        const projectsSubGallery = {
-            digital: {
-                title: "Criação Digital no Computador",
-                desc: "Processo criativo com sketch inicial, estruturação de vetores e arte final vetorizada.",
-                photos: ["trabalho1.jpg", "digital-detalhe1.jpg", "digital-detalhe2.jpg"]
-            },
-            printing: {
-                title: "Printing de Alta Precisão",
-                desc: "Configuração de perfis de cor, corte eletrônico de vinil e verificação de rolos.",
-                photos: ["trabalho2.jpg", "printing-detalhe1.jpg", "printing-detalhe2.jpg"]
-            },
-            wrapping: {
-                title: "Wrapping Automotivo Profissional",
-                desc: "Limpeza da lataria, aplicação aquecida com soprador térmico e acabamento nas maçanetas.",
-                photos: ["trabalho3.jpg", "wrapping-detalhe1.jpg", "wrapping-detalhe2.jpg"]
-            }
-        };
-
-        let currentSubIndex = 0;
-        let currentPhotosArray = [];
-
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.comic-page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            const targetPage = document.getElementById(pageId);
-            if(targetPage) {
-                targetPage.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function openProjectModal(projectId) {
-            const modal = document.getElementById('subGalleryModal');
-            const project = projectsSubGallery[projectId];
-
-            if(!project) return;
-
-            document.getElementById('subModalTitle').innerText = project.title;
-            document.getElementById('subModalDesc').innerText = project.desc;
-
-            currentPhotosArray = project.photos;
-            currentSubIndex = 0;
-
-            const track = document.getElementById('subPhotosTrack');
-            track.innerHTML = "";
-
-            currentPhotosArray.forEach(imgSrc => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'sub-photo-item';
-                
-                const img = document.createElement('img');
-                img.src = imgSrc;
-                img.alt = "Detalhe do trabalho";
-                
-                itemDiv.appendChild(img);
-                track.appendChild(itemDiv);
-            });
-
-            updateSubSliderPosition();
-            modal.classList.add('active');
-        }
-
-        function slideSubPhotos(direction) {
-            currentSubIndex += direction;
-            
-            if (currentSubIndex < 0) {
-                currentSubIndex = currentPhotosArray.length - 1;
-            } else if (currentSubIndex >= currentPhotosArray.length) {
-                currentSubIndex = 0;
-            }
-
-            updateSubSliderPosition();
-        }
-
-        function updateSubSliderPosition() {
-            const track = document.getElementById('subPhotosTrack');
-            if(track) {
-                track.style.transform = `translateX(-${currentSubIndex * 100}%)`;
-            }
-        }
-
-        function closeProjectModal() {
-            document.getElementById('subGalleryModal').classList.remove('active');
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('subGalleryModal');
-            if (event.target == modal) {
-                closeProjectModal();
-            }
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
