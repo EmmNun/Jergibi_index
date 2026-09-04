@@ -1,393 +1,109 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Jeremy Ortiz | Graphic Designer</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
-
+    <title>Jeremy Ortiz | Graphic Design Hero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- =========================
-         NAVEGAÇÃO
-    ========================== -->
+    <!-- BARRA DE NAVEGAÇÃO -->
     <header>
-
-        <div class="logo">
-            JEREMY ORTIZ
-        </div>
-
+        <div class="logo">JEREMY ORTIZ</div>
         <nav>
             <ul>
-                <li>
-                    <a href="#home" onclick="showPage('home'); return false;">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#about" onclick="showPage('about'); return false;">
-                        Sobre Mim
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#works" onclick="showPage('works'); return false;">
-                        Meus Trabalhos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#contact" onclick="showPage('contact'); return false;">
-                        Contato
-                    </a>
-                </li>
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">Sobre Mim</a></li>
+                <li><a onclick="scrollToSection('works')">Meus Trabalhos</a></li>
+                <li><a onclick="scrollToSection('contact')">Contato</a></li>
             </ul>
         </nav>
-
     </header>
 
+    <!-- SISTEMA DE CASCATA / SEÇÕES EM PILHA -->
+    <div class="cascade-container">
 
-    <!-- =========================
-         CONTAINER DAS PÁGINAS
-    ========================== -->
-    <main class="cascade-container">
-
-        <!-- =========================
-             HOME
-        ========================== -->
-        <section id="home" class="comic-page active">
-
-            <div class="comic-title-banner">
-                JEREMY ORTIZ:
-                <span>GRAPHIC DESIGN HERO!</span>
-            </div>
-
+        <!-- PÁGINA INICIAL (CAPA) -->
+        <section id="home" class="comic-page">
+            <div class="comic-title-banner">JEREMY ORTIZ: GRAPHIC DESIGN HERO!</div>
             <div class="comic-cover">
-
-                <img
-                    src="capa-gibi.png"
-                    alt="Capa do gibi de Jeremy Ortiz"
-                >
-
+                <img src="capa-gibi.png" alt="Capa de Gibi">
             </div>
-
-            <!-- LOSANGOS DECORATIVOS -->
-
-            <div class="diamond diamond-1"></div>
-            <div class="diamond diamond-2"></div>
-            <div class="diamond diamond-3"></div>
-            <div class="diamond diamond-4"></div>
-            <div class="diamond diamond-5"></div>
-            <div class="diamond diamond-6"></div>
-
         </section>
 
-
-        <!-- =========================
-             SOBRE MIM
-        ========================== -->
+        <!-- SOBRE MIM -->
         <section id="about" class="comic-page">
-
             <div class="about-box">
-
-                <div class="comic-label">
-                    GET TO KNOW ME
-                </div>
-
-                <h2>
-                    Sobre Mim
-                </h2>
-
-                <p>
-                    Olá! Meu nome é
-                    <strong>Jeremy Ortiz</strong>.
-                    Sou um designer gráfico apaixonado por transformar
-                    ideias criativas em realidade visual.
-                </p>
-
-                <p>
-                    Trabalho com criação digital no computador,
-                    impressão profissional e envelopamento automotivo,
-                    sempre buscando combinar criatividade, precisão
-                    e impacto visual.
-                </p>
-
-                <p>
-                    Meu estilo é inspirado no universo dos quadrinhos,
-                    utilizando cores fortes como preto, vermelho,
-                    azul e branco para criar designs marcantes.
-                </p>
-
-                <div class="skills">
-
-                    <div class="skill">
-                        <span>01</span>
-                        <h3>Graphic Design</h3>
-                        <p>Criação de artes e identidades visuais.</p>
-                    </div>
-
-                    <div class="skill">
-                        <span>02</span>
-                        <h3>Printing</h3>
-                        <p>Impressão profissional e materiais gráficos.</p>
-                    </div>
-
-                    <div class="skill">
-                        <span>03</span>
-                        <h3>Wrapping</h3>
-                        <p>Envelopamento automotivo e acabamento.</p>
-                    </div>
-
-                </div>
-
+                <h2>Sobre Mim</h2>
+                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Sou um designer gráfico apaixonado por transformar ideias criativas em realidade visual com muita energia e estilo de quadrinhos.</p>
+                <p>Trabalho com criação digital no computador, impressão profissional (printing) e envelopamento automotivo (wrapping), sempre focando em entregar resultados incríveis nas cores preto, vermelho, azul e branco!</p>
             </div>
-
         </section>
 
-
-        <!-- =========================
-             TRABALHOS
-        ========================== -->
+        <!-- MEUS TRABALHOS (GALERIA PRINCIPAL) -->
         <section id="works" class="comic-page">
-
-            <div class="comic-label">
-                MY WORK
-            </div>
-
-            <h2 class="section-title">
-                Galeria de Trabalhos
-            </h2>
-
+            <h2 class="section-title">Galeria de Trabalhos</h2>
             <div class="slider-wrapper">
-
-                <div
-                    class="gallery-slider"
-                    role="region"
-                    aria-label="Galeria de Trabalhos"
-                >
-
-                    <!-- TRABALHO 1 -->
-
-                    <div
-                        class="gallery-item"
-                        tabindex="0"
-                        onclick="openProjectModal('digital')"
-                    >
-
-                        <img
-                            src="trabalho1.jpg"
-                            alt="Design Digital"
-                        >
-
+                <div class="gallery-slider" role="region" aria-label="Galeria de Trabalhos">
+                    
+                    <div class="gallery-item" tabindex="0" onclick="openProjectModal('digital')">
+                        <img src="trabalho1.jpg" alt="Design Digital">
                         <div class="gallery-info">
-
-                            <h3>
-                                Design Digital
-                            </h3>
-
-                            <p>
-                                Criação de identidade visual
-                                e mascotes no computador.
-                            </p>
-
-                            <span class="view-project">
-                                VIEW PROJECT →
-                            </span>
-
+                            <h3>Design Digital</h3>
+                            <p>Criação de identidade visual e mascotes no computador.</p>
                         </div>
-
                     </div>
 
-
-                    <!-- TRABALHO 2 -->
-
-                    <div
-                        class="gallery-item"
-                        tabindex="0"
-                        onclick="openProjectModal('printing')"
-                    >
-
-                        <img
-                            src="trabalho2.jpg"
-                            alt="Printing"
-                        >
-
+                    <div class="gallery-item" tabindex="0" onclick="openProjectModal('printing')">
+                        <img src="trabalho2.jpg" alt="Printing">
                         <div class="gallery-info">
-
-                            <h3>
-                                Printing
-                            </h3>
-
-                            <p>
-                                Impressão de alta precisão
-                                em larga escala.
-                            </p>
-
-                            <span class="view-project">
-                                VIEW PROJECT →
-                            </span>
-
+                            <h3>Printing</h3>
+                            <p>Impressão de alta precisão em larga escala.</p>
                         </div>
-
                     </div>
 
-
-                    <!-- TRABALHO 3 -->
-
-                    <div
-                        class="gallery-item"
-                        tabindex="0"
-                        onclick="openProjectModal('wrapping')"
-                    >
-
-                        <img
-                            src="trabalho3.jpg"
-                            alt="Wrapping"
-                        >
-
+                    <div class="gallery-item" tabindex="0" onclick="openProjectModal('wrapping')">
+                        <img src="trabalho3.jpg" alt="Wrapping">
                         <div class="gallery-info">
-
-                            <h3>
-                                Wrapping
-                            </h3>
-
-                            <p>
-                                Envelopamento automotivo
-                                profissional.
-                            </p>
-
-                            <span class="view-project">
-                                VIEW PROJECT →
-                            </span>
-
+                            <h3>Wrapping</h3>
+                            <p>Envelopamento automotivo total em veículos comerciais.</p>
                         </div>
-
                     </div>
 
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             CONTATO
-        ========================== -->
+        <!-- CONTATO -->
         <section id="contact" class="comic-page">
-
             <div class="contact-box">
-
-                <div class="comic-label">
-                    CONTACT
-                </div>
-
-                <h2>
-                    Fale Comigo
-                </h2>
-
-                <p class="contact-info">
-                    E-mail:
-                    <a href="mailto:jeje@gmail.com">
-                        jeje@gmail.com
-                    </a>
-                </p>
-
-                <p class="contact-info">
-                    Instagram:
-                    <a
-                        href="https://instagram.com/jejegraphic"
-                        target="_blank"
-                    >
-                        @jejegraphic
-                    </a>
-                </p>
-
-                <p class="contact-info">
-                    Telefone:
-                    <a href="tel:9871234567">
-                        987-123-4567
-                    </a>
-                </p>
-
-                <div class="contact-decoration">
-                    LET'S CREATE SOMETHING AMAZING!
-                </div>
-
+                <h2>Fale Comigo</h2>
+                <p class="contact-info">E-mail: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
+                <p class="contact-info">Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
+                <p class="contact-info">Telefone: <a href="tel:9871234567">987-123-4567</a></p>
             </div>
-
         </section>
-
-    </main>
-
-
-    <!-- =========================
-         MODAL DOS PROJETOS
-    ========================== -->
-
-    <div id="subGalleryModal" class="modal">
-
-        <div class="modal-content">
-
-            <button
-                class="modal-x"
-                onclick="closeProjectModal()"
-            >
-                ×
-            </button>
-
-            <h3 id="subModalTitle">
-                Nome do Projeto
-            </h3>
-
-            <p id="subModalDesc">
-                Descrição geral do projeto.
-            </p>
-
-            <div class="sub-slider-container">
-
-                <button
-                    class="slider-arrow left-arrow"
-                    onclick="slideSubPhotos(-1)"
-                >
-                    ❮
-                </button>
-
-                <div
-                    class="sub-photos-track"
-                    id="subPhotosTrack"
-                ></div>
-
-                <button
-                    class="slider-arrow right-arrow"
-                    onclick="slideSubPhotos(1)"
-                >
-                    ❯
-                </button>
-
-            </div>
-
-            <button
-                class="close-modal"
-                onclick="closeProjectModal()"
-            >
-                FECHAR
-            </button>
-
-        </div>
 
     </div>
 
+    <!-- MODAL DE SUB-GALERIA -->
+    <div id="subGalleryModal" class="modal">
+        <div class="modal-content">
+            <h3 id="subModalTitle">Nome do Projeto</h3>
+            <p id="subModalDesc">Descrição geral do projeto executado.</p>
+            
+            <div class="sub-slider-container">
+                <button class="slider-arrow left-arrow" onclick="slideSubPhotos(-1)">❮</button>
+                <div class="sub-photos-track" id="subPhotosTrack"></div>
+                <button class="slider-arrow right-arrow" onclick="slideSubPhotos(1)">❯</button>
+            </div>
+
+            <button class="close-modal" onclick="closeProjectModal()">Fechar</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
-```
