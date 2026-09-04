@@ -4,7 +4,7 @@ const projectsSubGallery = {
         desc: "Processo criativo com sketch inicial, estruturação de vetores e arte final vetorizada.",
         photos: [
             "trabalho1.jpg",
-            "digital-detalhe1.jpg",
+            "foto1.jpg.jpeg",
             "digital-detalhe2.jpg"
         ]
     },
@@ -13,7 +13,8 @@ const projectsSubGallery = {
         desc: "Configuração de perfis de cor, corte eletrônico de vinil e verificação de rolos.",
         photos: [
             "trabalho2.jpg",
-            "printing-detalhe1.jpg",
+         "foto1.jpg.jpeg",
+
             "printing-detalhe2.jpg"
         ]
     },
@@ -22,7 +23,8 @@ const projectsSubGallery = {
         desc: "Limpeza da lataria, aplicação aquecida com soprador térmico e acabamento nas maçanetas.",
         photos: [
             "trabalho3.jpg",
-            "wrapping-detalhe1.jpg",
+           "foto1.jpg.jpeg",
+
             "wrapping-detalhe2.jpg"
         ]
     }
