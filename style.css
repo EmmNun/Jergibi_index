@@ -1,10 +1,21 @@
+```css
+/* =========================================
+   VARIÁVEIS
+========================================= */
+
 :root {
     --primary-black: #111111;
     --comic-white: #ffffff;
     --comic-red: #ff2222;
     --comic-blue: #0055ff;
+    --dark-blue: #061a4f;
     --border-width: 4px;
 }
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -12,358 +23,1357 @@
     padding: 0;
 }
 
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #0a0a0a;
-    background-image: 
-        linear-gradient(135deg, rgba(255, 34, 34, 0.15) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(0, 85, 255, 0.15) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(255, 34, 34, 0.05) 25%, #0a0a0a 25%);
-    background-size: 60px 60px;
-    color: var(--comic-white);
+    background: #080808;
+    color: white;
     overflow-x: hidden;
 }
 
-/* BARRA DE NAVEGAÇÃO */
-header {
+
+/* =========================================
+   FUNDO
+========================================= */
+
+body::before {
+    content: "";
+
     position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 34, 34, 0.12) 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            225deg,
+            rgba(0, 85, 255, 0.12) 25%,
+            transparent 25%
+        );
+
+    background-size: 80px 80px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+header {
+
+    position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
-    background-color: var(--primary-black);
-    border-bottom: var(--border-width) solid var(--comic-red);
+
+    height: 80px;
+
+    background: rgba(10, 10, 10, 0.96);
+
+    border-bottom:
+        var(--border-width)
+        solid
+        var(--comic-red);
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    padding: 15px 30px;
+
+    padding: 0 35px;
+
     z-index: 1000;
+
+    box-shadow:
+        0 5px 0 rgba(0,0,0,0.5);
 }
+
+
+/* LOGO */
 
 .logo {
+
     font-family: 'Bangers', cursive;
-    color: var(--comic-white);
-    font-size: 28px;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0px var(--comic-red);
+
+    font-size: 30px;
+
+    letter-spacing: 3px;
+
+    color: white;
+
+    text-shadow:
+        3px 3px 0 var(--comic-red);
+
 }
+
+
+/* MENU */
 
 nav ul {
+
     list-style: none;
+
     display: flex;
-    gap: 20px;
+
+    gap: 30px;
+
 }
+
 
 nav a {
+
     font-family: 'Bangers', cursive;
-    color: var(--comic-white);
-    text-decoration: none;
+
     font-size: 22px;
+
     letter-spacing: 1px;
+
+    color: white;
+
+    text-decoration: none;
+
     cursor: pointer;
-    transition: color 0.2s;
+
+    position: relative;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+
 }
+
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 3px;
+
+    background: var(--comic-red);
+
+    transition: width 0.25s ease;
+
+}
+
 
 nav a:hover {
+
     color: var(--comic-red);
+
+    transform: translateY(-2px);
+
 }
 
-/* CONTÊINER DO EFEITO CASCATA */
+
+nav a:hover::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
 .cascade-container {
-    margin-top: 120px;
+
     position: relative;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 20px 80px 20px;
-}
 
-/* PÁGINAS DO GIBI */
-.comic-page {
-    display: none; /* Esconde as inativas completamente do fluxo */
-    background: var(--comic-white);
-    color: var(--primary-black);
-    border: var(--border-width) solid var(--primary-black);
-    box-shadow: 12px 12px 0px var(--comic-blue);
-    padding: 40px;
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    transition: all 0.4s ease-in-out;
-}
+    width: min(1200px, 94%);
 
-/* PÁGINA ATIVA COM EFEITO DE ENTRADA */
-.comic-page.active {
-    display: block; /* Mostra apenas a ativa, permitindo rolagem vertical normal */
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
+    min-height: calc(100vh - 80px);
 
-/* EFEITO CASCATA REAL: SOBREPOSIÇÃO EM PILHA DE GIBI */
-.comic-page {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    right: 20px;
-    background: var(--comic-white);
-    color: var(--primary-black);
-    border: var(--border-width) solid var(--primary-black);
-    box-shadow: 12px 12px 0px var(--comic-blue);
-    padding: 40px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(30px) scale(0.97) rotate(-1deg);
-    transition: all 0.4s ease-in-out;
-    z-index: 1;
-}
-
-/* PÁGINA ATIVA (APARECE EM CIMA DA PILHA) */
-.comic-page.active {
-    position: relative;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) scale(1) rotate(0deg);
-    z-index: 10;
-}
-
-/* PÁGINA INICIAL */
-#home {
-    text-align: center;
-}
-
-.comic-cover {
-    border: var(--border-width) solid var(--primary-black);
-    background-color: var(--comic-white);
-    max-width: 800px;
     margin: 0 auto;
-    box-shadow: 6px 6px 0px var(--comic-red);
-    padding: 15px;
+
+    padding-top: 115px;
+
+    padding-bottom: 80px;
+
 }
 
-.comic-cover img {
-    width: 100%;
-    height: auto;
-    border: 2px solid var(--primary-black);
-    display: block;
-}
 
-.comic-title-banner {
-    background-color: var(--comic-red);
-    color: var(--comic-white);
-    font-family: 'Bangers', cursive;
-    font-size: 42px;
-    padding: 10px;
-    border: var(--border-width) solid var(--primary-black);
-    margin-bottom: 20px;
-    transform: rotate(-1deg);
-    box-shadow: 4px 4px 0px var(--primary-black);
-}
+/* =========================================
+   PÁGINAS
+========================================= */
 
-/* SOBRE MIM */
-.about-box h2 {
-    font-family: 'Bangers', cursive;
-    font-size: 40px;
-    color: var(--comic-blue);
-    margin-bottom: 20px;
-}
+/*
+   IMPORTANTE:
 
-.about-box p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
+   Não usamos display:none.
 
-/* GALERIA DESLIZANTE PRINCIPAL */
-h2.section-title {
-    font-family: 'Bangers', cursive;
-    font-size: 42px;
-    text-align: center;
-    color: var(--primary-black);
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 0px var(--comic-blue);
-}
+   Todas as páginas permanecem no DOM
+   para que o CSS consiga animá-las.
+*/
 
-.slider-wrapper {
-    position: relative;
-    max-width: 100%;
-}
+.comic-page {
 
-.gallery-slider {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 15px 5px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--comic-red) var(--primary-black);
-}
+    position: absolute;
 
-.gallery-item {
-    flex: 0 0 300px;
-    scroll-snap-align: start;
-    border: var(--border-width) solid var(--primary-black);
-    background: var(--comic-white);
-    box-shadow: 5px 5px 0px var(--primary-black);
-    cursor: pointer;
-    transition: transform 0.2s;
-}
+    top: 115px;
 
-.gallery-item:hover {
-    transform: scale(1.03);
-    border-color: var(--comic-blue);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: var(--border-width) solid var(--primary-black);
-}
-
-.gallery-info {
-    padding: 15px;
-}
-
-.gallery-info h3 {
-    font-family: 'Bangers', cursive;
-    font-size: 24px;
-    color: var(--comic-red);
-    margin-bottom: 5px;
-}
-
-.gallery-info p {
-    font-size: 14px;
-    color: #444;
-}
-
-/* CONTATO */
-.contact-box h2 {
-    font-family: 'Bangers', cursive;
-    font-size: 40px;
-    color: var(--comic-red);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.contact-info {
-    font-size: 20px;
-    margin: 15px 0;
-    font-weight: bold;
-    text-align: center;
-}
-
-.contact-info a {
-    color: var(--comic-blue);
-    text-decoration: none;
-}
-
-/* MODAL COM SUB-GALERIA INTERNA */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
     left: 0;
+
+    width: 100%;
+
+    min-height: calc(100vh - 195px);
+
+    padding: 45px;
+
+    background: white;
+
+    color: var(--primary-black);
+
+    border:
+        var(--border-width)
+        solid
+        var(--primary-black);
+
+    box-shadow:
+        14px 14px 0 var(--comic-blue);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    /*
+       Página começa fora da tela,
+       vindo do lado direito.
+    */
+
+    transform:
+        translateX(120%)
+        rotate(4deg)
+        scale(0.92);
+
+    transition:
+
+        transform 0.8s
+        cubic-bezier(0.68, -0.15, 0.265, 1.35),
+
+        opacity 0.5s ease,
+
+        visibility 0s linear 0.8s;
+
+    z-index: 1;
+
+}
+
+
+/* =========================================
+   PÁGINA ATIVA
+========================================= */
+
+.comic-page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(0)
+        rotate(0deg)
+        scale(1);
+
+    z-index: 20;
+
+    transition:
+
+        transform 0.8s
+        cubic-bezier(0.68, -0.15, 0.265, 1.35),
+
+        opacity 0.5s ease,
+
+        visibility 0s linear 0s;
+
+}
+
+
+/* =========================================
+   PÁGINA ANTERIOR
+========================================= */
+
+.comic-page.page-leaving {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateX(-110%)
+        rotate(-5deg)
+        scale(0.92);
+
+    z-index: 5;
+
+}
+
+
+/* =========================================
+   EFEITO DE CASCATA / SOMBRAS
+========================================= */
+
+.comic-page.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+
+    background: var(--comic-red);
+
+    border: 4px solid black;
+
+    z-index: -2;
+
+    transform:
+        rotate(-2deg)
+        translate(10px, 10px);
+
 }
+
+
+.comic-page.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    background: var(--comic-blue);
+
+    border: 4px solid black;
+
+    z-index: -3;
+
+    transform:
+        rotate(2deg)
+        translate(12px, 12px);
+
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+#home {
+
+    text-align: center;
+
+    overflow: hidden;
+
+}
+
+
+/* TÍTULO */
+
+.comic-title-banner {
+
+    position: relative;
+
+    display: inline-block;
+
+    background: var(--comic-red);
+
+    color: white;
+
+    font-family: 'Bangers', cursive;
+
+    font-size: clamp(28px, 5vw, 52px);
+
+    letter-spacing: 2px;
+
+    padding: 12px 25px;
+
+    border:
+        var(--border-width)
+        solid
+        black;
+
+    margin-bottom: 30px;
+
+    transform: rotate(-1deg);
+
+    box-shadow:
+        7px 7px 0 black;
+
+}
+
+
+.comic-title-banner span {
+
+    display: block;
+
+    color: white;
+
+}
+
+
+/* CAPA */
+
+.comic-cover {
+
+    width: min(850px, 100%);
+
+    margin: auto;
+
+    padding: 15px;
+
+    background: white;
+
+    border:
+        var(--border-width)
+        solid
+        black;
+
+    box-shadow:
+        10px 10px 0 var(--comic-red);
+
+}
+
+
+.comic-cover img {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    border: 3px solid black;
+
+}
+
+
+/* =========================================
+   LOSANGOS
+========================================= */
+
+.diamond {
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    background: var(--comic-red);
+
+    border: 5px solid black;
+
+    transform: rotate(45deg);
+
+    z-index: -1;
+
+    animation:
+        diamondFloat 4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.diamond-1 {
+
+    top: 180px;
+    left: -40px;
+
+}
+
+
+.diamond-2 {
+
+    top: 320px;
+    left: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    background: var(--comic-blue);
+
+    animation-delay: .5s;
+
+}
+
+
+.diamond-3 {
+
+    top: 470px;
+    left: -30px;
+
+    width: 90px;
+    height: 90px;
+
+    background: black;
+
+    animation-delay: 1s;
+
+}
+
+
+.diamond-4 {
+
+    top: 180px;
+    right: -35px;
+
+    width: 80px;
+    height: 80px;
+
+    background: var(--comic-blue);
+
+    animation-delay: .3s;
+
+}
+
+
+.diamond-5 {
+
+    top: 350px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    background: var(--comic-red);
+
+    animation-delay: .8s;
+
+}
+
+
+.diamond-6 {
+
+    top: 500px;
+    right: -35px;
+
+    width: 95px;
+    height: 95px;
+
+    background: black;
+
+    animation-delay: 1.2s;
+
+}
+
+
+@keyframes diamondFloat {
+
+    0%,
+    100% {
+
+        transform:
+            rotate(45deg)
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            rotate(45deg)
+            translateY(-15px);
+
+    }
+
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.comic-label {
+
+    display: inline-block;
+
+    background: var(--comic-blue);
+
+    color: white;
+
+    padding: 7px 15px;
+
+    border: 3px solid black;
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+
+    transform: rotate(-2deg);
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================
+   SOBRE MIM
+========================================= */
+
+.about-box h2 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 52px;
+
+    color: var(--comic-blue);
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        3px 3px 0 black;
+
+}
+
+
+.about-box p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 900px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* SKILLS */
+
+.skills {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 40px;
+
+}
+
+
+.skill {
+
+    padding: 25px;
+
+    border: 4px solid black;
+
+    background: #f5f5f5;
+
+    box-shadow:
+        6px 6px 0 var(--comic-red);
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.skill:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+}
+
+
+.skill span {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 20px;
+
+    color: var(--comic-red);
+
+}
+
+
+.skill h3 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 28px;
+
+    color: var(--comic-blue);
+
+    margin: 8px 0;
+
+}
+
+
+/* =========================================
+   GALERIA
+========================================= */
+
+.section-title {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 52px;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    color: black;
+
+    text-shadow:
+        3px 3px 0 var(--comic-blue);
+
+}
+
+
+.gallery-slider {
+
+    display: flex;
+
+    gap: 25px;
+
+    overflow-x: auto;
+
+    padding: 15px;
+
+    scroll-snap-type: x mandatory;
+
+}
+
+
+.gallery-slider::-webkit-scrollbar {
+
+    height: 10px;
+
+}
+
+
+.gallery-slider::-webkit-scrollbar-track {
+
+    background: black;
+
+}
+
+
+.gallery-slider::-webkit-scrollbar-thumb {
+
+    background: var(--comic-red);
+
+}
+
+
+/* CARDS */
+
+.gallery-item {
+
+    flex:
+        0 0 300px;
+
+    background: white;
+
+    border:
+        4px solid black;
+
+    box-shadow:
+        7px 7px 0 black;
+
+    cursor: pointer;
+
+    scroll-snap-align: start;
+
+    transition:
+
+        transform .3s ease,
+
+        box-shadow .3s ease;
+
+}
+
+
+.gallery-item:hover {
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg);
+
+    box-shadow:
+        10px 10px 0 var(--comic-blue);
+
+}
+
+
+.gallery-item img {
+
+    width: 100%;
+
+    height: 210px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-bottom:
+        4px solid black;
+
+}
+
+
+.gallery-info {
+
+    padding: 18px;
+
+}
+
+
+.gallery-info h3 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 28px;
+
+    color: var(--comic-red);
+
+    margin-bottom: 8px;
+
+}
+
+
+.gallery-info p {
+
+    color: #444;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+
+}
+
+
+.view-project {
+
+    font-family: 'Bangers', cursive;
+
+    color: var(--comic-blue);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================
+   CONTATO
+========================================= */
+
+.contact-box {
+
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: auto;
+
+}
+
+
+.contact-box h2 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 60px;
+
+    color: var(--comic-red);
+
+    text-shadow:
+        3px 3px 0 black;
+
+    margin-bottom: 35px;
+
+}
+
+
+.contact-info {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    margin: 20px 0;
+
+}
+
+
+.contact-info a {
+
+    color: var(--comic-blue);
+
+    text-decoration: none;
+
+}
+
+
+.contact-info a:hover {
+
+    color: var(--comic-red);
+
+}
+
+
+.contact-decoration {
+
+    margin-top: 50px;
+
+    padding: 20px;
+
+    background: black;
+
+    color: white;
+
+    border: 4px solid var(--comic-red);
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 25px;
+
+    letter-spacing: 2px;
+
+    transform: rotate(-1deg);
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.9);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .3s ease;
+
+    z-index: 2000;
+
+}
+
 
 .modal.active {
-    display: flex;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
 }
+
 
 .modal-content {
-    background-color: var(--comic-white);
-    color: var(--primary-black);
-    border: 6px solid var(--primary-black);
-    box-shadow: 10px 10px 0px var(--comic-red);
-    max-width: 750px;
-    width: 100%;
-    padding: 30px;
+
     position: relative;
+
+    width: min(800px, 100%);
+
+    background: white;
+
+    color: black;
+
+    border: 6px solid black;
+
+    box-shadow:
+        12px 12px 0 var(--comic-red);
+
+    padding: 30px;
+
     text-align: center;
+
+    transform:
+        scale(.8)
+        rotate(-3deg);
+
+    transition:
+        transform .4s ease;
+
 }
+
+
+.modal.active .modal-content {
+
+    transform:
+        scale(1)
+        rotate(0);
+
+}
+
 
 .modal-content h3 {
+
     font-family: 'Bangers', cursive;
-    font-size: 32px;
+
+    font-size: 38px;
+
     color: var(--comic-blue);
-    margin-bottom: 5px;
+
+    margin-bottom: 10px;
+
 }
 
-.modal-content p {
-    font-size: 15px;
+
+.modal-content > p {
+
     margin-bottom: 20px;
+
     color: #333;
+
 }
+
+
+/* BOTÃO X */
+
+.modal-x {
+
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    background: var(--comic-red);
+
+    color: white;
+
+    border: 3px solid black;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+/* SLIDER INTERNO */
 
 .sub-slider-container {
+
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
+
     overflow: hidden;
-    border: var(--border-width) solid var(--primary-black);
-    background: #000;
+
+    background: black;
+
+    border: 4px solid black;
+
+    margin-bottom: 25px;
+
 }
+
 
 .sub-photos-track {
+
     display: flex;
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
+
+    transition:
+        transform .4s ease;
+
 }
+
 
 .sub-photo-item {
+
     min-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
+
 
 .sub-photo-item img {
+
     width: 100%;
-    max-width: 25cm;
-    height: 380px;
+
+    height: 400px;
+
     object-fit: cover;
+
     display: block;
+
 }
+
+
+/* SETAS */
 
 .slider-arrow {
+
     position: absolute;
+
     top: 50%;
+
     transform: translateY(-50%);
-    background-color: var(--comic-red);
+
+    z-index: 5;
+
+    width: 50px;
+
+    height: 60px;
+
+    background: var(--comic-red);
+
     color: white;
-    border: 2px solid var(--primary-black);
-    font-size: 24px;
-    padding: 10px 15px;
+
+    border: 3px solid black;
+
+    font-size: 25px;
+
     cursor: pointer;
-    z-index: 10;
-    box-shadow: 2px 2px 0px var(--primary-black);
+
 }
+
 
 .slider-arrow:hover {
-    background-color: #d11111;
+
+    background: var(--comic-blue);
+
 }
 
-.left-arrow { left: 10px; }
-.right-arrow { right: 10px; }
+
+.left-arrow {
+
+    left: 10px;
+
+}
+
+
+.right-arrow {
+
+    right: 10px;
+
+}
+
+
+/* FECHAR */
 
 .close-modal {
-    background-color: var(--comic-blue);
-    color: var(--comic-white);
+
+    background: var(--comic-blue);
+
+    color: white;
+
+    border: 4px solid black;
+
+    padding: 10px 30px;
+
     font-family: 'Bangers', cursive;
+
     font-size: 22px;
-    padding: 8px 25px;
-    border: var(--border-width) solid var(--primary-black);
+
     cursor: pointer;
-    box-shadow: 3px 3px 0px var(--primary-black);
+
+    box-shadow:
+        4px 4px 0 black;
+
 }
 
+
 .close-modal:hover {
-    background-color: #0042cc;
+
+    background: var(--comic-red);
+
 }
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 800px) {
+
+    header {
+
+        height: auto;
+
+        min-height: 75px;
+
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+
+    nav ul {
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+
+    nav a {
+
+        font-size: 17px;
+
+    }
+
+
+    .cascade-container {
+
+        padding-top: 145px;
+
+    }
+
+
+    .comic-page {
+
+        top: 145px;
+
+        padding: 25px;
+
+    }
+
+
+    .skills {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .comic-title-banner {
+
+        font-size: 30px;
+
+    }
+
+
+    .section-title {
+
+        font-size: 40px;
+
+    }
+
+
+    .contact-box h2 {
+
+        font-size: 45px;
+
+    }
+
+
+    .diamond {
+
+        opacity: .5;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .logo {
+
+        font-size: 24px;
+
+    }
+
+
+    nav a {
+
+        font-size: 15px;
+
+    }
+
+
+    .comic-page {
+
+        padding: 18px;
+
+    }
+
+
+    .gallery-item {
+
+        flex-basis: 260px;
+
+    }
+
+
+    .sub-photo-item img {
+
+        height: 280px;
+
+    }
+
+}
+```
